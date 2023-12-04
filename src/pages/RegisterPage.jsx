@@ -1,32 +1,30 @@
-import { useContext, useEffect, useState } from "react"
-import { UserForm } from "../components/UserForm"
+import { useContext, useEffect, useState } from "react";
+import { ProductForm } from "../components/ProductForm"; // Asegúrate de importar el componente correcto
 import { useParams } from "react-router-dom";
-import { UserContext } from "../context/UserContext";
+import { ProductContext } from "../context/ProductContext"; // Asegúrate de tener el contexto correcto
 
 export const RegisterPage = () => {
+  const { products = [], initialProductForm } = useContext(ProductContext);
 
-    const  {users=[], initialUserForm} = useContext(UserContext)
+  const [productSelected, setProductSelected] = useState(initialProductForm);
 
-    const [userSelected, setUserSelected] = useState(initialUserForm);
+  const { id } = useParams();
 
-    const {id} = useParams();
+  useEffect(() => {
+    console.log(id);
+    if (id) {
+      /* SE BUSCA SI HAY UN PRODUCTO CON ESE ID SE EDITA O SI NO DEVUELVE initial... */
+      const product = products.find((p) => p.id == id) || initialProductForm;
+      setProductSelected(product);
+    }
+  }, [id, initialProductForm, products]);
 
-    useEffect(() => {
-        console.log(id);
-        if(id){
-            /* SE BUSCA SI HAY UN USUARIO CON ESE ID SE EDITA O SI NO DEVUELVE initial... */
-            const user = users.find(u => u.id == id) || initialUserForm
-            setUserSelected(user);
-        }
-    
-    }, [id])
-
-    return(
-        <div className="container my-4">
-            <h4>{userSelected.id>0 ? 'Editar' : 'Registrar'}</h4>
-            <div className="col">
-                <UserForm userSelected={userSelected}/>
-            </div>
-        </div>
-    )
-}
+  return (
+    <div className="container my-4">
+      <h4>{productSelected.id > 0 ? 'Editar' : 'Registrar'}</h4>
+      <div className="col">
+        <ProductForm productSelected={productSelected} />
+      </div>
+    </div>
+  );
+};

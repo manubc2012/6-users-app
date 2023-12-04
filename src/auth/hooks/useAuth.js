@@ -16,10 +16,15 @@ export const useAuth = () =>{
 
     const navigate = useNavigate();
     
-    const handlerLogin = ({username, password}) => {
-        const isLogin = loginUser({username, password});
-        if (isLogin) {
-            const user = {username: 'admin'}
+    const handlerLogin = async ({username, password}) => {
+        
+        try {
+            const response = await loginUser({username, password});
+            const token = response.data.token;
+            /* DECODIFICAR DE BASE 64 */
+            const claims =JSON.parse(window.atob(token.split(".")[1])) ;
+            console.log(claims);
+            const user = {username: claims.username}
             dispatch({
                 type: 'login',
                 payload: user,
@@ -29,11 +34,21 @@ export const useAuth = () =>{
                 isAuth: true,
                 user,
             }));
-            navigate('/users')
-        }else{
-            Swal.fire('Error de validación',
-            'Username o password invalidos',
-            'error');
+            sessionStorage.setItem('token', 'Bearer ' + token);
+            navigate('/products')
+        }catch(error){
+            if (error.response?.status === 401) {
+                Swal.fire('Error de validación',
+                    'Username o password invalidos',
+                    'error');
+            } else if (error.response?.status == 403) {
+                Swal.fire('Error de validación',
+                    'Username o password invalidos',
+                    'error');
+            } else {
+                throw error;
+            }
+            
         }
     }
 
@@ -41,7 +56,9 @@ export const useAuth = () =>{
         dispatch({
             type: 'logout',
         });
+        sessionStorage.removeItem('token')
         sessionStorage.removeItem('login')
+        sessionStorage.clear();
     }
 
 
