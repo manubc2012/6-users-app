@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { ProductForm } from "./ProductForm"; // Importa el nuevo componente ProductForm
-import { ProductContext } from "../context/ProductContext"; // Asegúrate de tener el contexto correcto
+import { ProductForm } from "./ProductForm"; 
+import { ProductContext } from "../context/ProductContext"; 
 
 export const ProductModalForm = () => {
   const { productSelected, handlerCloseForm } = useContext(ProductContext);
@@ -17,7 +17,7 @@ export const ProductModalForm = () => {
             </div>
             <div className="modal-body">
               <ProductForm
-                productSelected={productSelected} // Pasa el producto seleccionado al nuevo formulario
+                productSelected={productSelected} 
                 handlerCloseForm={handlerCloseForm}
               />
             </div>

@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
-import { ProductForm } from "../components/ProductForm"; // Asegúrate de importar el componente correcto
+import { ProductForm } from "../components/ProductForm";
 import { useParams } from "react-router-dom";
-import { ProductContext } from "../context/ProductContext"; // Asegúrate de tener el contexto correcto
+import { ProductContext } from "../context/ProductContext"; 
 
 export const RegisterPage = () => {
   const { products = [], initialProductForm } = useContext(ProductContext);

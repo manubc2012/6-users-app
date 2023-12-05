@@ -1,5 +1,5 @@
 import { useReducer, useState } from "react";
-import { productsReducer } from "../reducers/productsReducer"; // Asegúrate de importar el reducer correcto
+import { productsReducer } from "../reducers/productsReducer"; 
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { findAll, remove, save, update } from "../services/productsServices";
@@ -9,14 +9,14 @@ const initialProducts = [];
 
 const initialProductForm = {
   id: 0,
-  nombre: '',
+  name: '',
   precio: '',
   descripcion: '',
   categoria: '',
 };
 
 const initialErrors = {
-  nombre: '',
+  name: '',
   precio: '',
   descripcion: '',
   categoria: '',
@@ -69,7 +69,7 @@ export const useProducts = () => {
         error.response.status === 500 &&
         error.response.data?.message?.includes('constraint')
       ) {
-        // Aquí puedes manejar errores específicos de la base de datos, por ejemplo, si ya existe un producto con el mismo nombre.
+       
       } else {
         throw error;
       }

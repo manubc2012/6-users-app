@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { ProductRow } from "./ProductRow"; // Asegúrate de importar el componente correcto
-import { ProductContext } from "../context/ProductContext"; // Asegúrate de tener el contexto correcto
+import { ProductRow } from "./ProductRow"; 
+import { ProductContext } from "../context/ProductContext"; 
 
 export const ProductsList = () => {
   const { products } = useContext(ProductContext);

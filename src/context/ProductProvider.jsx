@@ -1,6 +1,6 @@
 import React from "react";
-import { ProductContext } from "./ProductContext"; // Asegúrate de importar el contexto correcto
-import { useProducts } from "../hooks/useProducts"; // Asegúrate de importar el hook correcto
+import { ProductContext } from "./ProductContext"; 
+import { useProducts } from "../hooks/useProducts";
 
 export const ProductProvider = ({ children }) => {
   const {
@@ -14,7 +14,7 @@ export const ProductProvider = ({ children }) => {
     handlerProductSelectedForm,
     handlerOpenForm,
     handlerCloseForm,
-    getProducts, // Asegúrate de tener esta función definida en useProducts
+    getProducts,
   } = useProducts();
 
   return (

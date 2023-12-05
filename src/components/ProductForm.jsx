@@ -13,7 +13,6 @@ export const ProductForm = ({ productSelected, handlerCloseForm }) => {
   useEffect(() => {
     setProductForm({
       ...productSelected,
-      // Puedes ajustar otros campos si es necesario
     });
   }, [productSelected]);
 
@@ -27,8 +26,6 @@ export const ProductForm = ({ productSelected, handlerCloseForm }) => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-
-    // Guardar el productForm en el listado de productos
     handlerAddProduct(productForm);
   };
 
@@ -42,11 +39,11 @@ export const ProductForm = ({ productSelected, handlerCloseForm }) => {
       <input
         className="form-control my-3 w-75"
         placeholder="Nombre"
-        name="nombre"
+        name="name"
         value={name}
         onChange={onInputChange}
       />
-      <p className="text-danger">{errors?.nombre}</p>
+      <p className="text-danger">{errors?.name}</p>
 
       <input
         className="form-control my-3 w-75"
@@ -57,7 +54,7 @@ export const ProductForm = ({ productSelected, handlerCloseForm }) => {
       />
       <p className="text-danger">{errors?.precio}</p>
 
-      <textarea
+      <input
         className="form-control my-3 w-75"
         placeholder="Descripción"
         name="descripcion"
@@ -66,14 +63,21 @@ export const ProductForm = ({ productSelected, handlerCloseForm }) => {
       />
       <p className="text-danger">{errors?.descripcion}</p>
 
-      <input
+      <select
         className="form-control my-3 w-75"
-        placeholder="Categoría"
         name="categoria"
         value={categoria}
         onChange={onInputChange}
-      />
+      >
+        <option value="" disabled>
+          Seleccione una categoría
+        </option>
+        <option value="Brownies">Brownies</option>
+        <option value="Galletas">Galletas</option>
+        <option value="Torta">Torta</option>
+      </select>
       <p className="text-danger">{errors?.categoria}</p>
+
 
       <input
         type="hidden"

@@ -1,9 +1,8 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import { ProductsPage } from "../pages/ProductsPage"; // Asegúrate de tener el componente correcto
+import { ProductsPage } from "../pages/ProductsPage"; 
 import { Navbar } from "../components/layout/NavBar";
 import { RegisterPage } from "../pages/RegisterPage";
-import { ProductProvider } from "../context/ProductProvider"; // Asegúrate de tener el proveedor de contexto correcto
-
+import { ProductProvider } from "../context/ProductProvider"; 
 export const ProductRoutes = () => {
   return (
     <>

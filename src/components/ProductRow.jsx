@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
-import { ProductContext } from "../context/ProductContext"; // Asegúrate de tener el contexto correcto
-
+import { ProductContext } from "../context/ProductContext";
 export const ProductRow = ({ id, name, precio, descripcion, categoria }) => {
   const { handlerProductSelectedForm, handlerRemoveProduct } = useContext(
     ProductContext
@@ -35,8 +34,9 @@ export const ProductRow = ({ id, name, precio, descripcion, categoria }) => {
         <NavLink
           className={"btn btn-secondary btn-sm"}
           to={"/products/edit/" + id}
+          
         >
-          update route
+          update 
         </NavLink>
       </td>
       <td>

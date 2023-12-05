@@ -21,6 +21,7 @@ export const findAll = async() => {
 }
 
 export const save = async ({ name, precio, descripcion, categoria }) => {
+    console.log(name, precio, descripcion, categoria);
     try {
         return await axios.post(BASE_URL, {
             name,

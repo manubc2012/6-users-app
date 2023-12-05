@@ -1,14 +1,14 @@
 import { useContext, useEffect } from "react";
-import { ProductModalForm } from "../components/ProductModalForm"; // Asegúrate de importar el componente correcto
-import { ProductsList } from "../components/ProductsList"; // Asegúrate de importar el componente correcto
-import { ProductContext } from "../context/ProductContext"; // Asegúrate de tener el contexto correcto
+import { ProductModalForm } from "../components/ProductModalForm"; 
+import { ProductsList } from "../components/ProductsList"; 
+import { ProductContext } from "../context/ProductContext";
 
 export const ProductsPage = () => {
   const {
     products,
     visibleForm,
     handlerOpenForm,
-    getProducts, // Asegúrate de tener esta función en tu contexto
+    getProducts, 
   } = useContext(ProductContext);
 
   useEffect(() => {
